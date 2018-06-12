@@ -1,0 +1,11 @@
+function copiar1() {
+  
+  // 1. ⬆️ 📃
+  var localSS = SpreadsheetApp.getActiveSpreadsheet();
+  var datos = localSS.getSheetByName('Datos');
+  var valores = datos.getRange('A2:B6').getValues();
+  
+  // 2. ⬇️ 📃
+  datos.getRange('D2:E6').setValues(valores);
+  
+}
