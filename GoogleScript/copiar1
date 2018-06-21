@@ -1,11 +1,75 @@
+// ⧝ SimpleMente  
+
+// *** Copiar1 > datos  completos - all data ***
 function copiar1() {
   
-  // 1. ⬆️ 📃
-  var localSS = SpreadsheetApp.getActiveSpreadsheet();
-  var datos = localSS.getSheetByName('Datos');
-  var valores = datos.getRange('A2:B6').getValues();
+  // 1. ⬆️ (cargar datos)(upload data) 
+  const localSS = SpreadsheetApp.getActiveSpreadsheet(); 
+  const datos = localSS.getSheetByName('Datos'); 
+  const valores = datos.getRange('A2:E7').getValues(); 
   
-  // 2. ⬇️ 📃
-  datos.getRange('D2:E6').setValues(valores);
+  // 2. ⬇️ (ingreso datos)(data entry)
+  datos.getRange('G2:K7').setValues(valores); 
   
+}
+
+// *** Copiar2 > Columnas, Columns ***
+function copiar2() {
+  
+  // 1. ⬆️
+  const localSS = SpreadsheetApp.getActiveSpreadsheet();
+  const datos = localSS.getSheetByName('Datos');
+  const valores = datos.getRange('A11:E16').getValues();
+  
+  // 2. ⚙ (proceso datos)(process data)
+  const a = valores.map(function(x) {
+    return [x[0],x[2],x[3]]
+  });
+  
+  // 3. ⬇️
+  datos.getRange('G11:I16').setValues(a);
+}
+
+// *** Copiar3 > celdas con posición, cells with position ***
+function copiar3() {
+  
+  // 1. ⬆️
+  const localSS = SpreadsheetApp.getActiveSpreadsheet();
+  const datos = localSS.getSheetByName('Datos');
+  const valores = datos.getRange('A20:E25').getValues();
+   
+  // 2. ⚙
+  const d = [[0,1,0,0,1],[0,1,0,0,1],[0,0,0,1,0],[1,1,0,0,1],[0,0,1,0,0],[0,1,0,1,1]];
+  const a = valores.map(function(x,i) {
+    return x.map(function(y,ii) {
+      if(d[i][ii]){return y} else{return ''}
+    })
+  });
+ 
+  // 3. ⬇️
+  datos.getRange('G20:K25').setValues(a);
+}
+
+// *** Copiar4 - Rango fecha, date range
+function copiar4() {
+  
+  // 1. ⬆️
+  const localSS = SpreadsheetApp.getActiveSpreadsheet();
+  const datos = localSS.getSheetByName('Datos');
+  const valores = datos.getRange('A29:E34').getValues();
+  
+  // 2. ⚙
+  // 2.1 🗑️
+  valores.splice(1,1);
+  valores.map(function(x) {x.splice(3,1)});
+  // 2.2 📅
+  const fi = new Date(2018,9,3).setHours(0,0,0);
+  const ff = new Date(2018,9,5).setHours(0,0,0);
+  // 2.3 🧐
+  const a = valores.filter(function(x) {
+    return  new Date(x[1]).setHours(0,0,0) > fi && new Date(x[1]).setHours(0,0,0) <= ff   
+  })
+  
+  // 3. ⬇️
+  datos.getRange('G29:J31').setValues(a);
 }
