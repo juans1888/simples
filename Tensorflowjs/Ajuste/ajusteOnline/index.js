@@ -61,7 +61,7 @@ async function resumenResultados(coeforiginal, coefAjustados) {
   // coeficientes predichos
   cp = coefPredichos.map(x => Number(x[0].toFixed(2)));
   // error entre coeficientes
-  ce = co.map((x,i) => Math.abs((x - cp[i])/x).toFixed(2)*100)
+  ce = co.map((x,i) => (Math.abs((x - cp[i])/x)*100).toFixed(2))
   const resultados = [ ['Originales', ...co], ['Predichos', ...cp], ['% error', ...ce]];
   // insercion
   const tabla = document.getElementById('tabla').tBodies[0];
@@ -121,7 +121,7 @@ async function entrenar(dOriginales, coefEntreno) {
   ys = dOriginales.yo;
   // Paremetros de configuracion -- settings
   let tasaAprendizaje = 0.5; // learning rate
-  let numIter = 200; // epochs
+  let numIter = 40; // epochs
   const optimizador = tf.train.sgd(tasaAprendizaje); // optimizer
   // Entreno // train
   for (let iter = 0; iter < numIter; iter++) {
