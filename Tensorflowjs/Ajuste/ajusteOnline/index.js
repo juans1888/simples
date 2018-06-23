@@ -121,7 +121,7 @@ async function entrenar(dOriginales, coefEntreno) {
   ys = dOriginales.yo;
   // Paremetros de configuracion -- settings
   let tasaAprendizaje = 0.5; // learning rate
-  let numIter = 40; // epochs
+  let numIter = 200; // epochs
   const optimizador = tf.train.sgd(tasaAprendizaje); // optimizer
   // Entreno // train
   for (let iter = 0; iter < numIter; iter++) {
