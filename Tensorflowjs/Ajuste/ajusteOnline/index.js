@@ -1,12 +1,12 @@
 // *** 1. AJUSTE DE CURVA - FITTING CURVE ***
 async function ajuste() {
-  // 2.1 Datos originales - original data
+  // 1.1 Datos originales - original data
   const [dOriginales, coeforiginal] = await datosOriginales();
-  // 2.2 Datos iniciales - initial data
+  // 1.2 Datos iniciales - initial data
   const coefEntreno = await datosIniciales(dOriginales);
-  // 2.3 Datos predichos - predict data
+  // 1.3 Datos predichos - predict data
   const coefAjustados = await datosPredichos(dOriginales, coefEntreno);
-  // 2.4 Resumen de resultados - summary of result 
+  // 1.4 Resumen de resultados - summary of result 
   resumenResultados(coeforiginal, coefAjustados);
 }
 // 1.1 Datos originales - original data
