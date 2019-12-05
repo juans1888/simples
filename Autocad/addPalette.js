@@ -1,5 +1,5 @@
 // .addPalette('Palette name', 'Path')
 Acad.Application.addPalette(
-  'Geometrias2',
-  'D:/proyectos/simples/Autocad/intro/geometries2.html'
+  'svg1',
+  'http://localhost:3000/'
 )
